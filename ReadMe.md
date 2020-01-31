@@ -1,7 +1,11 @@
-## <REPOSITORY_PROJECT_NAME>
+## mlnck.openSource.arweave.LinkedPermaWe
 
-Repository for OPEN SOURCE project _<REPOSITORY_PROJECT_NAME>_
-Leveraging _Infura_ and _Ethereum_
+Repository for OPEN SOURCE project mlnck.openSource.arweave.LinkedPermaWe
+
+---
 
 ### Project Overview:
----
+
+The end result will be a dApp that allows users to view which links have been saved to the permaweb as well as how they relate to each other.
+
+The user will be able to view previously saved pages as well as navigate to unsaved pages to quickly save them to the permaweb.
