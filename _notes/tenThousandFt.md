@@ -131,7 +131,10 @@
 
 ---
 ## Back End Break Down
-### Endpoints
+### Internal Fetches
+- [GET] User specific stats
+- [GET] App specific stats
+### External Endpoints
 - [GET] /recent/{amt}
   - utilize something along the lines of:
     - https://mdflqndwudrx.arweave.net/A7ctf1azriZxHGWKurMQfDFrGOncG-MBn4A59Tt1kzw/index.html#/transactions
@@ -146,3 +149,18 @@
   - _**return**_
     - internal links
     - external links
+
+---
+## Dev Plan
+- [ ] Architect FE
+- [ ] Mock d3
+- [ ] Build Components
+- [ ] Mock Internal Fetches
+- [ ] Mock External Endpoints
+- [ ] Create Internal Fetches
+- [ ] Replace Mock Internal Fetches
+- [ ] Create External Fetches
+- [ ] Replace Mock External Fetches
+- [ ] Build Modules
+- [ ] Construct App
+- [ ] Enable _Options_ functionality
