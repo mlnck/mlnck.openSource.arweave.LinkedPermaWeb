@@ -1,12 +1,15 @@
 # LinkedPermaWeb
 
 ## Base
-- d3 will be outside of any shadow root.
+> NOTE: changing d3 to jit
+- ~~d3~~jit will be outside of any shadow root.
+    - http://philogb.github.io/jit/static/v20/Jit/Examples/Spacetree/example2.html
+    - http://philogb.github.io/jit/static/v20/Docs/files/Core/Core-js.html
   - Seems like putting it inside of one could cause unneeded complications
     - see below for elements included in d3
 - Will contain module inputs for:
   - Instructions
-  - Log (section='site | user | comments')
+  - Log (section='arweave | user | comments')
   - Options
   - Profile
   - StatsDapp
@@ -111,7 +114,7 @@
 - Will accordion style down and up to display how the dApp works
 - For IE will toggle open and closed
 
-### Log (section='site')
+### Log (section='arweave')
 - Will be card like and show logs pertaining to entire dApp
 ### Log (section='user')
 - Will be card like and show logs pertaining to specific user

@@ -1,16 +1,36 @@
 (function(){
   'use strict'
 
-  const arweave = Arweave.init({logging: true}),
-        nodeConfig = {
-                      detachedMin:8,
+  const nodeConfig = {
+                      detachedMin:4,
+                      loadingData: [
+                                      'Gathering Starting Points',
+                                      'Obtaining Unsaved Linked',
+                                      'Formatting Graph Data',
+                                      'Loading Graph',
+                                      'Loading User Information',
+                                      'Loading Logs',
+                                      'COMPLETE'
+                                  ],
+                      loadingPos:0,
                     }
-  let arNetwork,
-      nodesLoading = true,
-      blocksLoaded = [], // [max, ..., min]
-      nodeHash = {} // {  baseUrl:string: [<txnId>: {data:string, tags: {url, title, timestamp}}] }
 
-  const loadNodes = (obj) =>
+  const dispatchLogLine = (obj) =>
+  {
+    const { whichLog='arweave', msg=obj } = obj,
+          appStatus = whichLog === 'arweave'
+                      ? ` <${nodeConfig.loadingData[nodeConfig.loadingPos]}>`
+                      : ''
+
+    console.log(`[${whichLog.toUpperCase()}]:${appStatus} ${msg}`)
+  }
+
+  const arweave = Arweave.init({logging: true, logger: dispatchLogLine})
+  let arNetwork,
+      blocksLoaded = [], // [max, ..., min]
+      nodeHash = {} // {  baseUrl:string: {links:{<btoa(url)>: {url:string, type:'internal|external', txnId:string|null} }, txn:{<txnId>: {data:string, owner:string, tags: {title, timestamp}}}} }
+
+  const loadNodes = (obj) => // START loadingData[0]
   {
     const validateTags = (txns) =>
     {
@@ -26,8 +46,8 @@
             txQ.tagDecode = {}
             txQ.value.get('tags').forEach(tag => 
             {
-              let k = tag.get('name', {decode: true, string: true});
-              let v = tag.get('value', {decode: true, string: true});
+              let k = tag.get('name', {decode: true, string: true}),
+                  v = tag.get('value', {decode: true, string: true})
               if(k === 'page:url')
               {
                 baseUrl = v.replace(/.*:\/\//,'').replace(/[^\w.].*/,'').split('.')
@@ -39,32 +59,32 @@
               txQ.tagDecode[k] = v
             })
             if(isValid){
-              let txnObj = {}
-                  txnObj[txQ.value.id] = {
+              let txnObj = {},
+                  link = {}
+                  link[btoa(txQ.tagDecode['page:url'])] = {url:txQ.tagDecode['page:url'], type:'internal', txnId:txQ.value.id}
+                  delete txQ.tagDecode['page:url']
+
+                  txnObj = {
                     data: txQ.value.data+'',
-                    tags: txQ.tagDecode
+                    owner: txQ.value.owner+'',
+                    tags: txQ.tagDecode,
                   }
-              nodeHash[baseUrl] = nodeHash[baseUrl]
-                                  ? [
-                                      ...nodeHash[baseUrl],
-                                      txnObj
-                                    ]
-                                  : [txnObj]
+              //internal links should start being set here as well
+              if(!nodeHash[baseUrl]){ nodeHash[baseUrl] = { links:{}, txn:{}} }
+              nodeHash[baseUrl].links = {...nodeHash[baseUrl].links, ...link}
+              nodeHash[baseUrl].txn[txQ.value.id] = txnObj
             }
           }
         })
-        if(Object.keys(nodeHash).length < nodeConfig.detachedMin)
-        { loadBlock(blocksLoaded.last-1) }
-        else{ console.log('MADE IT'); console.log('blocksLoaded',blocksLoaded) }
-        console.log('nodeHash',nodeHash)
-        console.log('Object.keys(nodeHash).length',Object.keys(nodeHash).length)
+        if(Object.keys(nodeHash).length < nodeConfig.detachedMin){ loadBlock(blocksLoaded.last-1) }
+        else{ console.log('NEXT STEP: ', nodeHash) }
       })
       .catch(err => console.error(err))
     }
 
     const loadBlock = (blk) =>
     {
-      //375340 - 375364 <-- good blocks for debugging [a lot of twitter]
+      //375340 - 375364, 375403 <-- good blocks for debugging [a lot of twitter]
       arweave.api.get(`/block/height/${blk}`)
         .then(obj => {
           blocksLoaded.push(blk)
@@ -78,13 +98,11 @@
             {
               arNetwork = {...obj} //clone in case we need to mutate anything
               // loadBlock(375364) // <-- GREAT for Debug
-              loadBlock(obj.height)
+              // loadBlock(375403) // <-- GREAT for Debug
+              loadBlock(arNetwork.height)
             })
         .catch(err => console.error(err))
-
-  }
-  loadNodes()
-  
+  } // END loadingData[0]
 
   const queryTxn = (txn) =>
   {
@@ -118,7 +136,10 @@
     //   expr2: "comment"
     // }).then(obj => console.log('obj',obj))
   }
+  
   const authorizeUser = (obj) => {
     console.log('for auth: https://github.com/mul1sh/ar-auth#developers')
   }
+
+  loadNodes()
 })()
