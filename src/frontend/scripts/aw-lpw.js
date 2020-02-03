@@ -3,13 +3,14 @@
 
   const nodeConfig = {
                       detachedMin:4,
+                      externalMax:3,
                       loadingData: [
-                                      'Gathering Starting Points',
-                                      'Obtaining Unsaved Linked',
+                                      'Obtaining Externally Linked Sites',
                                       'Formatting Graph Data',
                                       'Loading Graph',
                                       'Loading User Information',
                                       'Loading Logs',
+                                      'Gathering Starting Points',
                                       'COMPLETE'
                                   ],
                       loadingPos:0,
@@ -30,8 +31,25 @@
       blocksLoaded = [], // [max, ..., min]
       nodeHash = {} // {  baseUrl:string: {links:{<btoa(url)>: {url:string, type:'internal|external', txnId:string|null} }, txn:{<txnId>: {data:string, owner:string, tags: {title, timestamp}}}} }
 
+  const obtainExternalLinks = () => // START loadingData[5]
+  {
+    //this can all be done on click from the first level nodes.
+      // do this AFTER displaying graph
+    nodeConfig.loadingPos = 5
+    dispatchLogLine('Node has been selected. Obtaining internal information');
+    console.log('obtainExternalLinks:NodeHash',nodeHash)
+  } // END loadingData[5]
+  
+  const formatGraphData = () => // START loadingData[1]
+  {
+    nodeConfig.loadingPos = 1
+    dispatchLogLine('Initial Blocks have been parsed');
+    console.log('formatGraphData:NodeHash',nodeHash)
+  } // END loadingData[1]
+
   const loadNodes = (obj) => // START loadingData[0]
   {
+    nodeConfig.loadingPos = 0
     const validateTags = (txns) =>
     {
       const txnsQueries = txns.map(itm => arweave.transactions.get(itm))
@@ -77,7 +95,7 @@
           }
         })
         if(Object.keys(nodeHash).length < nodeConfig.detachedMin){ loadBlock(blocksLoaded.last-1) }
-        else{ console.log('NEXT STEP: ', nodeHash) }
+        else{ formatGraphData() }
       })
       .catch(err => console.error(err))
     }
