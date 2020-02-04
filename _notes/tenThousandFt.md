@@ -164,7 +164,7 @@
 ---
 ## Dev Plan
 - [ ] Architect FE
-- [ ] Mock d3
+- [X] Mock d3
 - [ ] Build Components
 - [X] ~~Mock Internal Fetches~~
 - [X] ~~Mock External Endpoints~~
