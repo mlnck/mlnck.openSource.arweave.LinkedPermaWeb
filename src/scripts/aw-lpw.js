@@ -68,7 +68,7 @@
                   v = tag.get('value', {decode: true, string: true})
               if(k === 'page:url')
               {
-                baseUrl = v.replace(/.*:\/\//,'').replace(/[^\w.].*/,'').split('.')
+                baseUrl = v.replace(/.*:\/\/(www\.)?/,'').replace(/[^\w-.].*/,'').split('.')
                 while(baseUrl.length > 2){ baseUrl.shift() }
                 baseUrl = baseUrl.join('.')
                 isValid = true
