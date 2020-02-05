@@ -4,11 +4,56 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Linked Permaweb</title>
+  <link type="text/css" href="assets/graph/Spacetree.css" rel="stylesheet" />
+
   <link rel="stylesheet" href="assets/styles/style.css">
+  
   <script src="./scripts/prototypes.js"></script>
   <script src="./scripts/arweave.min.js"></script>
+
+  <!--[if IE]><script language="javascript" type="text/javascript" src="assets/graph/excanvas.js"></script><![endif]-->
+  <script language="javascript" type="text/javascript" src="assets/graph/jit.js"></script>
+  <script language="javascript" type="text/javascript" src="assets/graph/example2.js"></script>
 </head>
-<body>
+<body onload="init();">
+
+  <div class="base-column-wrapper">
+    <awlpw-userprofile>
+      Loading Profile...
+    </awlpw-userprofile>
+  </div>
+
+  <div class="base-column-wrapper">
+    <awlpw-instructions class="flat">
+      dropdown
+    </awlpw-instructions>
+
+    <awlpw-graphfilters>
+      filters
+    </awlpw-graphfilters>
+
+    <div>
+      <div id="infovis" style="width:600px;height:600px;"></div>
+      <awlpw-graphstats>
+        stats
+      </awlpw-graphstats>
+    </div>
+
+    <div class="flat">
+      <awlpw-logsuser>
+        logs:user
+      </awlpw-logsuser>
+
+      <awlpw-logsstats>
+        logs:stats
+      </awlpw-logsstats>
+    </div>
+  </div>
+  
+  <awlpw-flyout class="flat">
+    Flyout
+  </awlpw-flyout>
+
   <script src="./scripts/aw.lpw.js"></script>
 </body>
 </html>
