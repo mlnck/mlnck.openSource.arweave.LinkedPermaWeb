@@ -1,6 +1,6 @@
-## mlnck.openSource.arweave.LinkedPermaWe
+## mlnck.openSource.arweave.LinkedPermaWeb
 
-Repository for OPEN SOURCE project mlnck.openSource.arweave.LinkedPermaWe
+Repository for OPEN SOURCE project mlnck.openSource.arweave.LinkedPermaWeb
 
 ---
 

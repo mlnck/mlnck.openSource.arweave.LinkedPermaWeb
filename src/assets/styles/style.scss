@@ -1,0 +1,52 @@
+// Usage (from src):
+  // sass --style=compressed --error-css --stop-on-error --watch --update -c assets/styles/style.scss:assets/styles/style.css
+
+@import 'base';
+@import 'custom-style';
+@import 'module-components';
+
+.base-column-wrapper
+{
+  display:inline-block;
+  min-height:100%;
+  vertical-align:top;
+  width:calc(80% - .8rem);
+
+  &:first-of-type{ width:20%; }
+  & > *:not(.flat)
+  {
+    background-color:rgba(100,100,100,.3);
+    border-radius:.3rem;
+    display:block;
+    margin:.4rem;
+    padding:.4rem;
+  }
+}
+
+.fleft{ float:left }
+.fright{ float:right }
+
+.logs > *
+{
+  background-color:rgba(100,100,100,.3);
+  border-radius:.3rem;
+  margin:.4rem;
+  overflow:hidden;
+  padding:.4rem;
+  width:calc(50% - .8rem);
+}
+
+.wrap-contain
+{
+  height:0;margin:0;padding:0;visibility:hidden
+}
+
+#infovis
+{
+  background-color:rgba(100,100,100,.3);
+  border-radius:.3rem;
+  display: inline-block;
+  vertical-align:top;
+
+  & + awlpw-graphstats { width: calc(20% - .8rem) }
+}
