@@ -1,6 +1,7 @@
 var labelType, useGradients, nativeTextSupport, animate;
 
-(function() {
+(function()
+{
   var ua = navigator.userAgent,
       iStuff = ua.match(/iPhone/i) || ua.match(/iPad/i),
       typeOfCanvas = typeof HTMLCanvasElement,
@@ -187,9 +188,8 @@ function init(){
     st.onClick(st.root);
     //end
     //Add event handlers to switch spacetree orientation.
-   function get(id) {
-      return document.getElementById(id);  
-    };
+  function get(id)
+  { return document.getElementById(id) }
 
     var top = get('r-top'), 
     left = get('r-left'), 

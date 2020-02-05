@@ -163,7 +163,7 @@
 
 ---
 ## Dev Plan
-- [ ] Architect FE
+- [X] Architect FE
 - [X] Mock d3
 - [ ] Build Components
 - [X] ~~Mock Internal Fetches~~
@@ -173,6 +173,11 @@
 - [X] ~~Create External Fetches~~
 - [X] ~~Replace Mock External Fetches~~
 - [ ] Parse Returned txn info for Internal and External fetches 
+  - [X] Initial Internal
+  - [ ] Initial External
+  - [ ] onClick Internal
+  - [ ] onClick External
+- [ ] Parse User Info
 - [ ] Build Modules
 - [ ] Construct App
 - [ ] Enable _Options_ functionality
