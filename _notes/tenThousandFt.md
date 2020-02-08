@@ -18,7 +18,7 @@
 - Instructions
   - [Components]:
     - instructions
-- Log
+- UserLog
   - [Components]:
     - avatar
     - entry
@@ -46,6 +46,7 @@
   - ? <button>
   - ? <input>
   - ? <div>
+  - ? <ul>
 - boxSlot
   - [button]
     - <span>
@@ -58,6 +59,11 @@
     - <i> (_font awesome?_)
     - <strong>
     - <label>
+  - [log]
+    - <li>
+    - <strong>
+    - <label>
+    - <span>
 - entry
   - <h2>
   - <p>
@@ -115,7 +121,7 @@
 - For IE will toggle open and closed
 
 ### Log (section='arweave')
-- Will be card like and show logs pertaining to entire dApp
+- Will be card like and show logs `<ul><li>` pertaining to entire dApp
 ### Log (section='user')
 - Will be card like and show logs pertaining to specific user
 ### Log (section='comments')

@@ -4,16 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Linked Permaweb</title>
-  <link type="text/css" href="assets/graph/Spacetree.css" rel="stylesheet" />
-
-  <link rel="stylesheet" href="assets/styles/style.css">
+  <link rel="stylesheet" href="./assets/styles/css/style.css">
   
   <script src="./scripts/prototypes.js"></script>
   <script src="./scripts/arweave.min.js"></script>
 
   <!--[if IE]><script language="javascript" type="text/javascript" src="assets/graph/excanvas.js"></script><![endif]-->
-  <script language="javascript" type="text/javascript" src="assets/graph/jit.js"></script>
-  <script language="javascript" type="text/javascript" src="assets/graph/example2.js"></script>
+  <script language="javascript" type="text/javascript" src="./scripts/graph/jit.js"></script>
+  <script language="javascript" type="text/javascript" src="./scripts/graph/example2.js"></script>
 </head>
 <body onload="init();">
 
@@ -35,18 +33,18 @@
     <div>
       <div id="infovis" style="width:80%;height:600px;"></div>
       <awlpw-graphstats>
-        stats
+        selection info
       </awlpw-graphstats>
     </div>
 
     <div class="logs">
-      <awlpw-logsuser class="fleft">
+      <awlpw-log class="fleft">
         logs:user
-      </awlpw-logsuser>
+      </awlpw-log>
 
-      <awlpw-logsstats class="fright">
-        logs:stats
-      </awlpw-logsstats>
+      <awlpw-log class="fright">
+        logs:dApp
+      </awlpw-log>
       <p class="wrap-contain">Pseudo-padding to help with positioning</p>
     </div>
   </div>

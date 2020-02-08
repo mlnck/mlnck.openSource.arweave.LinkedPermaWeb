@@ -1,5 +1,8 @@
 .DS*
 
+# Compiled
+src/assets/styles/css
+
 # Logs
 logs
 *.log
@@ -10,17 +13,14 @@ yarn-error.log*
 # Modules
 node_modules/
 
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
+# Optional cache directories
+# .cache is parcel-bundler cache (https://parceljs.org/)
+.cache
 .eslintcache
+.npm
 
 # Optional private notes directory
 _notes/.ignored/
 
 # Yarn Integrity file
 .yarn-integrity
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
