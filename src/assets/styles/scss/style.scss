@@ -46,4 +46,27 @@
   vertical-align:top;
 
   & + awlpw-graphstats { width: calc(20% - .8rem) }
+
+  .root
+  {
+    background: red;
+    display: block;
+    height: 20px;
+    position: relative;
+    width: 45px;
+
+    &::after,
+    &::before
+    {
+      display: block;
+      background: red;
+      height: 10px;
+      width: 10px;
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: -5px;
+    }
+    &::after{ left:unset; right: 5px; }
+  }
 }
