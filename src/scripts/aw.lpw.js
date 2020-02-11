@@ -158,6 +158,6 @@
   const authorizeUser = (obj) => {
     console.log('for auth: https://github.com/mul1sh/ar-auth#developers')
   }
-
-  loadNodes()
+  console.warn('UNCOMMENT `loadNodes()` BELOW WHEN READY')
+  // loadNodes()
 })()

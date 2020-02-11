@@ -1,15 +1,14 @@
-import ListComponent from '../components/list.mjs'
-
-(function(){
-  let tmpl = document.createElement('template')
-      tmpl.innerHTML = `
+<template id="component-list">
       <link rel="stylesheet" href="./assets/styles/css/modules/log.css">
       
+      <link rel="import" href="../components/list.html">
+      
       <div class="log-wrapper">
-        <h3>Log</h3>
-        <awlpw-componentlist>Loadinsdfg...</awlpw-componentlist>
-      </div>`
-
+        <h3>Logd</h3>
+        <awlpw-componentlist>Lzxading...</awlpw-componentlist>
+      </div>
+</template>
+  
   class AwLpwLog extends HTMLElement
   {
     constructor() {
@@ -21,6 +20,7 @@ import ListComponent from '../components/list.mjs'
 
     connectedCallback()
     {
+        console.log('LOG CONNECTED')
       // this.addEventListener('awlpw-log', obj => {
         //   document.querySelector('playercard-base')
         //     .shadowRoot.querySelector('playercard-back')
@@ -38,6 +38,8 @@ import ListComponent from '../components/list.mjs'
       this._setModuleAttributes()
 
       customElements.whenDefined('awlpw-log').then(() => { // root loaded, wait for nested components
+      console.log('customElements',customElements)
+      console.log('alw - does it get here?')
         Promise.all([ //Remove when `slotchange` support recognizes initial load
                 customElements.whenDefined('awlpw-componentlist'),
                 // customElements.whenDefined('playercard-front'),
