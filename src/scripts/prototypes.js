@@ -179,6 +179,7 @@ console.dev = (key, ...opts) =>
 }
 
 //POLYFILL
+HTMLTemplateElement.containCSS = `<style>:host {all: initial;contain: content;display: block;&([hidden]) { display: none }</style>`
 if (!String.prototype.padStart) {
     String.prototype.padStart = function padStart(targetLength, padString) {
         targetLength = targetLength >> 0; //truncate if number, or convert non-number to 0;

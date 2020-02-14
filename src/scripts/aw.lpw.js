@@ -22,8 +22,11 @@
           appStatus = whichLog === 'arweave'
                       ? ` <${nodeConfig.loadingData[nodeConfig.loadingPos]}>`
                       : ''
+    // [ARWEAVE]: <Obtaining Externally Linked Sites> Response:   https://arweave.net:443/tx/Tz9DOAEs5GUpFgKXPrYIa2WLYKn1Qb6qfGaDrAWMayU - 200
 
-    console.log(`[${whichLog.toUpperCase()}]:${appStatus} ${msg}`)
+    const logMsg = `[${whichLog.toUpperCase()}]:${appStatus} ${msg}`,
+          logElm = document.querySelector(`awlpw-log[dataid="${whichLog.toLowerCase()}"]`)
+    console.log('logMsg',logMsg,logElm)
   }
 
   const arweave = Arweave.init({logging: true, logger: dispatchLogLine})
@@ -147,13 +150,13 @@
     //  https://arweave.net/tx/Cn_kOJHBAGQ0XaaiL5wRZ6byC-LSBg2Mhdzz79C-0SM
   }
 
-  const loadLogs = (obj) => {
-      //   arweave.arql({
-    //   op: "equals",
-    //   expr1: "type",
-    //   expr2: "comment"
-    // }).then(obj => console.log('obj',obj))
-  }
+
+  // const loadLogs = (obj) => {
+  //       arweave.arql({
+  //   //   op: "equals",
+  //   //   expr1: "type",
+  //   //   expr2: "comment"
+  //   }).then(obj => console.log('obj',obj)) }
   
   const authorizeUser = (obj) => {
     console.log('for auth: https://github.com/mul1sh/ar-auth#developers')

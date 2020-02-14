@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" 
         content="default-src 'none'; 
+        connect-src 'self' https://arweave.net;
         img-src 'self'; 
         script-src 'self' https://unpkg.com 'unsafe-inline' 'unsafe-eval'; 
         style-src 'self' 'unsafe-inline'">
@@ -13,7 +14,6 @@
 
   <link rel="stylesheet" href="./assets/styles/css/style.css">
   
-  <script src="./scripts/webcomponents-bundle.js"></script>
   <script src="./scripts/prototypes.js"></script>
   <script src="./scripts/arweave.min.js"></script>
 
@@ -30,6 +30,14 @@
   <div class="base-column-wrapper">
     <awlpw-userprofile>
       Loading Profile...
+      REMEMBER:
+      <ul>
+        <li>click to display on right</li>
+        <li>leave site and come back</li>
+        <li>available to copy site link</li>
+        <li></li>
+        <li></li>
+      </ul>
     </awlpw-userprofile>
   </div>
 
@@ -50,12 +58,12 @@
     </div>
 
     <div class="logs">
-      <awlpw-log class="fleft">
+      <awlpw-log class="fleft" logid="user">
         logs:user
       </awlpw-log>
 
-      <awlpw-log class="fright">
-        logs:dApp
+      <awlpw-log class="fright" logid="arweave">
+        Current Session Logs
       </awlpw-log>
       <p class="wrap-contain">Pseudo-padding to help with positioning</p>
     </div>
